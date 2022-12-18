@@ -20,22 +20,53 @@ const winOutcomes = [
 let gameBoard, playerTurn, player1, theWinner
 
 /*------------------------------------------Cached---------------------------------------------*/
-
+const gameBoardEls = document.querySelector('.game-board')
 const tileEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
 
 /*------------------------------------------Event Listeners------------------------------------*/
-
+gameBoardEls.addEventListener('click', handleClick)
 
 /*------------------------------------------Functions------------------------------------------*/
+start()
 
 function start() {
-    gameBoard = 0
+    gameBoard = [
+        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
+    ]
     playerTurn = 1
     theWinner = false
     rendor()
 }
 
 function rendor() {
+    gameBoardPlay()
+}
 
+function gameBoardPlay() {
+    gameBoard.forEach(function(slot, idx) {
+        if (slot === 1) {
+            return tileEls[idx].innerHTML = "player1"
+        }else if (slot === -1) {
+            return tileEls[idx].innerHTML = "player2"
+        }else {
+            return tileEls[idx].innerHTML = ""
+        }
+    })
+}
+
+function handleClick(evt) {
+    const boardIdx = evt.target.id
+
+    if (winner === true) {
+        return
+    }
+    if (gameBoard[boardIdx]) {
+        return
+    }
 }
