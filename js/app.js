@@ -43,12 +43,12 @@ function start() {
     tie= false
     theWinner = false
     render()
+    gameStartMessage()
 }
 
 function render() {
     gameBoardPlay()
     outcomeMessage()
-    // gameStartMessage()
 }
 
 function gameBoardPlay() {
@@ -78,28 +78,21 @@ function handleClick(evt) {
 }
 
 function gameStartMessage() {
-    let startMessage = gameBoard.forEach(function(slot) {
+    gameBoard.forEach(function(slot) {
         if (slot === null) {
             displayMessage.textContent = "Click a tiki to begin"
         }
     })
-    return startMessage
 }
 
 function outcomeMessage() {
-    let startMessage = gameBoard.forEach(function(slot) {
-        if (slot === null) {
-            displayMessage.textContent = "Click a tiki to begin"
-        }
-     if (theWinner === false && tie === false) {
-            displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
-        }else if (theWinner === false && tie === true) {
-            displayMessage.textContent = "It's a tie"
-        }else {
-            displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
-        }
-    })
-    return startMessage
+    if (theWinner === false && tie === false) {
+        displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
+    }else if (theWinner === false && tie === true) {
+        displayMessage.textContent = "It's a tie"
+    }else {
+        displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
+    }
 }
 
 function changeTurn() {
