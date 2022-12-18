@@ -48,7 +48,7 @@ function start() {
 function render() {
     gameBoardPlay()
     outcomeMessage()
-    gameStartMessage()
+    // gameStartMessage()
 }
 
 function gameBoardPlay() {
@@ -72,6 +72,7 @@ function handleClick(evt) {
     if (gameBoard[boardIdx]) {
         return
     }
+    gameTokens(boardIdx)
     changeTurn()
     render()
 }
@@ -86,13 +87,19 @@ function gameStartMessage() {
 }
 
 function outcomeMessage() {
-    if (theWinner === false && tie === false) {
-        displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
-    }else if (theWinner === false && tie === true) {
-        displayMessage.textContent = "It's a tie"
-    }else {
-        displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
-    }
+    let startMessage = gameBoard.forEach(function(slot) {
+        if (slot === null) {
+            displayMessage.textContent = "Click a tiki to begin"
+        }
+     if (theWinner === false && tie === false) {
+            displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
+        }else if (theWinner === false && tie === true) {
+            displayMessage.textContent = "It's a tie"
+        }else {
+            displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
+        }
+    })
+    return startMessage
 }
 
 function changeTurn() {
@@ -101,5 +108,10 @@ function changeTurn() {
     }else {
         playerTurn = playerTurn * -1
     }
+}
+
+function gameTokens(idx) {
+    gameBoard[idx] = playerTurn
+    console.log(gameBoard);
 }
 
