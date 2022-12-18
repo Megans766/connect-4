@@ -72,9 +72,11 @@ function handleClick(evt) {
     if (gameBoard[boardIdx]) {
         return
     }
-    gameTokens(boardIdx)
+    gameToken(boardIdx)
+    tieGame()
     changeTurn()
     render()
+    console.log(boardIdx);
 }
 
 function gameStartMessage() {
@@ -89,7 +91,7 @@ function outcomeMessage() {
     if (theWinner === false && tie === false) {
         displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
     }else if (theWinner === false && tie === true) {
-        displayMessage.textContent = "It's a tie"
+        displayMessage.textContent = "It's a tie!"
     }else {
         displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
     }
@@ -103,8 +105,14 @@ function changeTurn() {
     }
 }
 
-function gameTokens(idx) {
+function gameToken(idx) {
     gameBoard[idx] = playerTurn
     console.log(gameBoard);
+}
+
+function tieGame() {
+    tie = gameBoard.every(function(slot) {
+        return slot !== null 
+    })
 }
 
