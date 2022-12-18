@@ -17,7 +17,7 @@ const winOutcomes = [
 ]
 
 /*------------------------------------------Variables------------------------------------------*/
-let gameBoard, playerTurn, player1, theWinner
+let gameBoard, playerTurn, tie, theWinner
 
 /*------------------------------------------Cached---------------------------------------------*/
 const gameBoardEls = document.querySelector('.game-board')
@@ -40,12 +40,15 @@ function start() {
         null, null, null, null, null, null, null,
     ]
     playerTurn = 1
+    tie= false
     theWinner = false
-    rendor()
+    render()
 }
 
-function rendor() {
+function render() {
     gameBoardPlay()
+    outcomeMessage()
+    gameStartMessage()
 }
 
 function gameBoardPlay() {
@@ -63,10 +66,40 @@ function gameBoardPlay() {
 function handleClick(evt) {
     const boardIdx = evt.target.id
 
-    if (winner === true) {
+    if (theWinner === true) {
         return
     }
     if (gameBoard[boardIdx]) {
         return
     }
+    changeTurn()
+    render()
 }
+
+function gameStartMessage() {
+    let startMessage = gameBoard.forEach(function(slot) {
+        if (slot === null) {
+            displayMessage.textContent = "Click a tiki to begin"
+        }
+    })
+    return startMessage
+}
+
+function outcomeMessage() {
+    if (theWinner === false && tie === false) {
+        displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
+    }else if (theWinner === false && tie === true) {
+        displayMessage.textContent = "It's a tie"
+    }else {
+        displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
+    }
+}
+
+function changeTurn() {
+    if (theWinner === true) {
+        return 
+    }else {
+        playerTurn = playerTurn * -1
+    }
+}
+
