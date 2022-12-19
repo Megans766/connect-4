@@ -33,11 +33,9 @@ let gameBoard, playerTurn, tie, theWinner
 /*------------------------------------------Cached---------------------------------------------*/
 const tileEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
-const columnEls = document.querySelectorAll('.column')
 
 /*------------------------------------------Event Listeners------------------------------------*/
-// tileEls.addEventListener('click', handleClick)
-// columnEls.addEventListener('click', '')
+
 
 /*------------------------------------------Functions------------------------------------------*/
 start()
@@ -49,96 +47,37 @@ function start() {
         null, null, null, null, null, null, null,
         null, null, null, null, null, null, null,
         null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null
     ]
     playerTurn = 1
     tie= false
     theWinner = false
-    render()
-    // gameStartMessage()
 }
 
 function render() {
-    // gameBoardPlay()
-    // outcomeMessage()
+
 }
 
-// function gameBoardPlay() {
-//     gameBoard.forEach(function(slot, idx) {
-//         if (slot === 1) {
-//             return tileEls[idx].innerHTML = "player1"
-//         }else if (slot === -1) {
-//             return tileEls[idx].innerHTML = "player2"
-//         }else {
-//             return tileEls[idx].innerHTML = ""
-//         }
-//     })
-// }
+function changeTurn() {
+    if (theWinner === true) {
+        return
+    }else {
+        playerTurn = playerTurn * -1
+    }
+}
 
-// function handleClick(evt) {
-//     const boardIdx = evt.target.id
+function tieGame() {
+    tie = gameBoard.every(function(slot) {
+        return slot !== null
+    })
+}
 
-//     if (theWinner === true) {
-//         return
-//     }
-//     if (gameBoard[boardIdx]) {
-//         return
-//     }
-//     gameToken(boardIdx)
-//     tieGame()
-//     changeTurn()
-//     render()
-//     console.log(boardIdx);
-// }
+function gameBoardPlay() {
+    for (let i = 0; i < boardColumns.length; i++) {
+        gameBoard.forEach(function(slot) {
+            if (slot === 1) {
 
-// function gameStartMessage() {
-//     gameBoard.forEach(function(slot) {
-//         if (slot === null) {
-//             displayMessage.textContent = "Click a token below to begin"
-//         }
-//     })
-// }
-
-// function outcomeMessage() {
-//     if (theWinner === false && tie === false) {
-//         displayMessage.textContent = `Player ${playerTurn === 1? 'Player1' : 'Player2'} turn`
-//     }else if (theWinner === false && tie === true) {
-//         displayMessage.textContent = "It's a tie!"
-//     }else {
-//         displayMessage.textContent = `Player ${playerTurn === -1? 'Player1' : 'Player2'} wins!`
-//     }
-// }
-
-// function changeTurn() {
-//     if (theWinner === true) {
-//         return 
-//     }else {
-//         playerTurn = playerTurn * -1
-//     }
-// }
-
-// function gameToken(idx) {
-//     gameBoard[idx] = playerTurn
-//     console.log(gameBoard);
-// }
-
-// function tieGame() {
-//     tie = gameBoard.every(function(slot) {
-//         return slot !== null 
-//     })
-// }
-
-// function gameWinner() {
-    
-// }
-
-// function dropToken() {
-
-// }
-
-function dropToken() {
-    let tokenPlacement = boardColumns
-
-    if ()
-
+            }
+        })
+    }
 }
