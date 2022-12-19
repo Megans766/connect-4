@@ -1,15 +1,4 @@
 /*------------------------------------------Constants------------------------------------------*/
-const boardColumns = [
-    [tileEls[0], tileEls[7], tileEls[14], tileEls[21], tileEls[28], tileEls[35]],
-    [tileEls[1], tileEls[8], tileEls[15], tileEls[22], tileEls[29], tileEls[36]],
-    [tileEls[2], tileEls[9], tileEls[16], tileEls[23], tileEls[30], tileEls[37]],
-    [tileEls[3], tileEls[10], tileEls[17], tileEls[24], tileEls[31], tileEls[38]],
-    [tileEls[4], tileEls[11], tileEls[18], tileEls[25], tileEls[32], tileEls[39]],
-    [tileEls[5], tileEls[12], tileEls[19], tileEls[26], tileEls[33], tileEls[40]],
-    [tileEls[6], tileEls[13], tileEls[20], tileEls[27], tileEls[34], tileEls[41]],
-]
-
-
 const winOutcomes = [
     //winning combos down
     [0, 7, 14, 21], [7, 14, 21, 28], [14, 21, 28, 35], [1, 8, 15, 22], [8, 15, 22, 29], [15, 22, 29, 36], [2, 9, 16, 23],
@@ -27,15 +16,18 @@ const winOutcomes = [
     [10, 16, 22, 28], [3, 9, 15, 21], [3, 11, 19, 27]
 ]
 
+// let playerOneToken = document.body.style.backgroundColor = "#03FFBC"
+// let playerTwoToken = document.body.style.backgroundColor = "#FF01E7"
 /*------------------------------------------Variables------------------------------------------*/
 let gameBoard, playerTurn, tie, theWinner
 
 /*------------------------------------------Cached---------------------------------------------*/
+const gameBoardEls = document.querySelector('.game-board')
 const tileEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
 
 /*------------------------------------------Event Listeners------------------------------------*/
-
+gameBoardEls.addEventListener('click', handleClick)
 
 /*------------------------------------------Functions------------------------------------------*/
 start()
@@ -50,12 +42,82 @@ function start() {
         null, null, null, null, null, null, null
     ]
     playerTurn = 1
-    tie= false
+    tie = false
     theWinner = false
+    render()
+    gameStartMessage()
 }
 
 function render() {
+    gameBoardPlay()
+    outcomeMessage()
+}
+function handleClick(evt) {
+    const tileIdx = parseInt(evt.target.id)
+    placeToken(tileIdx)
+    tieGame()
+    changeTurn()
+    render()
+}
 
+function gameStartMessage() {
+    gameBoard.forEach(function(slot) {
+        if (slot === null) {
+            displayMessage.textContent = "Click a column to begin"
+        }
+    })
+}
+function gameBoardPlay() {
+    gameBoard.forEach(function(slot, idx) {
+        if (slot === 1) {
+            tileEls[idx] === `${playerTurn === 1? 'player1' : 'player2'}`
+        }else if (slot === -1) {
+            tileEls[idx] === `${playerTurn === 1? 'player1': 'player2'}`
+        }else {
+            tileEls[idx] === ""
+        }
+    })
+}
+
+//piece fills bottom of board up
+//if column is selected filter through column to see which spot is available
+//if spot is open fill spot by current player turn 
+
+function placeToken(tileIdx) {
+    console.log(tileIdx);
+    for (let i = 7; i <= gameBoard.length; i++) {
+        if (tileIdx % i === 0) {
+
+        }
+    }
+    
+}
+// for (let i = 7; i <= gameBoard.length; i++) {
+//     tileEls.forEach(function(idx) {
+//         if (tileEls[idx] % i === 0) {
+//             return tileEls[35] === `${playerTurn === 1? 'player1' : 'player2'}`
+//         }else if (tileEls[35] !== null) {
+//             return tileEls[28] === `${playerTurn === 1? 'player1' : 'player2'}`
+//         }else if (tileEls[35] !== null && tileEls[28] !== null) {
+//             return tileEls[21] === `${playerTurn === 1? 'player1' : 'player2'}`
+//         }else if (tileEls[35] !== null && tileEls[28] !== null && tileEls[21] !== null) {
+//             return tileEls[14] === `${playerTurn === 1? 'player1' : 'player2'}`
+//         }else if (tileEls[35] !== null && tileEls[28] !== null && tileEls[21] !== null && tileEls[14] !== null) {
+//             return tileEls[7] === `${playerTurn === 1? 'player1' : 'player2'}`
+//         }else {
+//             return tileEls[0]
+//         }
+//     })
+// }
+
+function outcomeMessage() {
+    if (theWinner === false && tie === false) {
+        displayMessage.textContent = `${playerTurn === 1? 'player1' : 'player2'} turn`
+    }else if (theWinner === false && tie === true) {
+        displayMessage.textContent = "It's a tie!"
+    }else {
+        displayMessage.textContent = `${playerTurn === -1? 'player1' : 'player2'} wins!`
+    }
 }
 
 function changeTurn() {
@@ -70,14 +132,4 @@ function tieGame() {
     tie = gameBoard.every(function(slot) {
         return slot !== null
     })
-}
-
-function gameBoardPlay() {
-    for (let i = 0; i < boardColumns.length; i++) {
-        gameBoard.forEach(function(slot) {
-            if (slot === 1) {
-
-            }
-        })
-    }
 }
