@@ -1,11 +1,4 @@
 /*------------------------------------------Constants------------------------------------------*/
-// const row1 = [slotEls[0], slotEls[1], slotEls[2], slotEls[3], slotEls[4], slotEls[5], slotEls[6]]
-// const row2 = [slotEls[7], slotEls[8], slotEls[9], slotEls[10], slotEls[11], slotEls[12], slotEls[13]]
-// const row3 = [slotEls[14], slotEls[15], slotEls[16], slotEls[17], slotEls[18], slotEls[19], slotEls[20]]
-// const row4 = [slotEls[21], slotEls[22], slotEls[23], slotEls[24], slotEls[25], slotEls[26], slotEls[27]]
-// const row5 = [slotEls[28], slotEls[29], slotEls[30], slotEls[31], slotEls[32], slotEls[33], slotEls[34]]
-// const row6 = [slotEls[35], slotEls[36], slotEls[37], slotEls[38], slotEls[39], slotEls[40], slotEls[41]]
-
 const winOutcomes = [
     //winning combos down
     [0, 7, 14, 21], [7, 14, 21, 28], [14, 21, 28, 35], [1, 8, 15, 22], [8, 15, 22, 29], [15, 22, 29, 36], [2, 9, 16, 23],
@@ -23,13 +16,12 @@ const winOutcomes = [
     [10, 16, 22, 28], [3, 9, 15, 21], [3, 11, 19, 27]
 ]
 /*------------------------------------------Variables------------------------------------------*/
-let gameBoard, playerTurn, tie, theWinner
+let gameBoard, playerTurn, tie, theWinner, gameStart
 
 /*------------------------------------------Cached---------------------------------------------*/
 const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
-
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
 
@@ -61,6 +53,11 @@ function handleClick(evt) {
     const slotIdx = parseInt(evt.target.id)
     if (gameBoard[slotIdx] !== null) return
 
+    // gameStart = 35
+    // while(gameBoard[slotIdx + gameStart] !== null) {
+    //     gameStart -= 7
+    // }
+    // gameBoard[slotIdx + gameStart] = playerTurn
     placeToken(slotIdx)
     tieGame()
     changeTurn()
@@ -81,22 +78,17 @@ function gameBoardPlay() {
         }else if (slot === -1) {
             return slotEls[idx].style.backgroundColor = "#FF01E7"
         }else {
-            return slotEls[idx].style.backgroundColor = "FFFFFF"
+            return slotEls[idx].style.backgroundColor = "#FFFFFF"
         }
     })
 }
 
-//piece fills bottom of board up
-//if column is selected filter through column to see which spot is available
-//if spot is open fill spot by current player turn 
-
 function placeToken(slotIdx) {
-    const row6 = [slotEls[35], slotEls[36], slotEls[37], slotEls[38], slotEls[39], slotEls[40], slotEls[41]]
-    let gameStart = row6
-    gameBoard[slotIdx] = playerTurn
-    if(gameBoard[slotIdx] === null) {
-        return 
+    gameStart = 35
+    while (gameBoard[slotIdx + gameStart] !== null) {
+        gameStart -= 7
     }
+    gameBoard[slotIdx + gameStart] = playerTurn
 }
 
 function outcomeMessage() {
