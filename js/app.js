@@ -1,10 +1,10 @@
 /*------------------------------------------Constants------------------------------------------*/
-const row1 = [tileEls[0], tileEls[1], tileEls[2], tileEls[3], tileEls[4], tileEls[5], tileEls[6]]
-const row2 = [tileEls[7], tileEls[8], tileEls[9], tileEls[10], tileEls[11], tileEls[12], tileEls[13]]
-const row3 = [tileEls[14], tileEls[15], tileEls[16], tileEls[17], tileEls[18], tileEls[19], tileEls[20]]
-const row4 = [tileEls[21], tileEls[22], tileEls[23], tileEls[24], tileEls[25], tileEls[26], tileEls[27]]
-const row5 = [tileEls[28], tileEls[29], tileEls[30], tileEls[31], tileEls[32], tileEls[33], tileEls[34]]
-const row6 = [tileEls[35], tileEls[36], tileEls[37], tileEls[38], tileEls[39], tileEls[40], tileEls[41]]
+// const row1 = [slotEls[0], slotEls[1], slotEls[2], slotEls[3], slotEls[4], slotEls[5], slotEls[6]]
+// const row2 = [slotEls[7], slotEls[8], slotEls[9], slotEls[10], slotEls[11], slotEls[12], slotEls[13]]
+// const row3 = [slotEls[14], slotEls[15], slotEls[16], slotEls[17], slotEls[18], slotEls[19], slotEls[20]]
+// const row4 = [slotEls[21], slotEls[22], slotEls[23], slotEls[24], slotEls[25], slotEls[26], slotEls[27]]
+// const row5 = [slotEls[28], slotEls[29], slotEls[30], slotEls[31], slotEls[32], slotEls[33], slotEls[34]]
+// const row6 = [slotEls[35], slotEls[36], slotEls[37], slotEls[38], slotEls[39], slotEls[40], slotEls[41]]
 
 const winOutcomes = [
     //winning combos down
@@ -22,9 +22,6 @@ const winOutcomes = [
     [17, 25, 33, 41], [2, 10, 18, 26], [10, 18, 26, 34], [5, 11, 17, 23], [11, 17, 23, 29], [17, 23, 29, 35], [4, 10, 16, 22],
     [10, 16, 22, 28], [3, 9, 15, 21], [3, 11, 19, 27]
 ]
-
-// let playerOneToken = document.body.style.backgroundColor = "#03FFBC"
-// let playerTwoToken = document.body.style.backgroundColor = "#FF01E7"
 /*------------------------------------------Variables------------------------------------------*/
 let gameBoard, playerTurn, tie, theWinner
 
@@ -62,8 +59,7 @@ function render() {
 }
 function handleClick(evt) {
     const slotIdx = parseInt(evt.target.id)
-
-    if (gameBoard[slotIdx]) return
+    if (gameBoard[slotIdx] !== null) return
 
     placeToken(slotIdx)
     tieGame()
@@ -95,7 +91,12 @@ function gameBoardPlay() {
 //if spot is open fill spot by current player turn 
 
 function placeToken(slotIdx) {
+    const row6 = [slotEls[35], slotEls[36], slotEls[37], slotEls[38], slotEls[39], slotEls[40], slotEls[41]]
+    let gameStart = row6
     gameBoard[slotIdx] = playerTurn
+    if(gameBoard[slotIdx] === null) {
+        return 
+    }
 }
 
 function outcomeMessage() {
