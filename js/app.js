@@ -1,4 +1,11 @@
 /*------------------------------------------Constants------------------------------------------*/
+const row1 = [tileEls[0], tileEls[1], tileEls[2], tileEls[3], tileEls[4], tileEls[5], tileEls[6]]
+const row2 = [tileEls[7], tileEls[8], tileEls[9], tileEls[10], tileEls[11], tileEls[12], tileEls[13]]
+const row3 = [tileEls[14], tileEls[15], tileEls[16], tileEls[17], tileEls[18], tileEls[19], tileEls[20]]
+const row4 = [tileEls[21], tileEls[22], tileEls[23], tileEls[24], tileEls[25], tileEls[26], tileEls[27]]
+const row5 = [tileEls[28], tileEls[29], tileEls[30], tileEls[31], tileEls[32], tileEls[33], tileEls[34]]
+const row6 = [tileEls[35], tileEls[36], tileEls[37], tileEls[38], tileEls[39], tileEls[40], tileEls[41]]
+
 const winOutcomes = [
     //winning combos down
     [0, 7, 14, 21], [7, 14, 21, 28], [14, 21, 28, 35], [1, 8, 15, 22], [8, 15, 22, 29], [15, 22, 29, 36], [2, 9, 16, 23],
@@ -24,12 +31,6 @@ let gameBoard, playerTurn, tie, theWinner
 /*------------------------------------------Cached---------------------------------------------*/
 const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
-const rowZero = document.querySelectorAll('.row0')
-const rowOne = document.querySelectorAll('.row1')
-const rowTwo = document.querySelectorAll('.row2')
-const rowThree = document.querySelectorAll('.row3')
-const rowFour = document.querySelectorAll('.row4')
-const rowFive = document.querySelectorAll('.row5')
 const displayMessage = document.getElementById('game-result')
 
 /*------------------------------------------Event Listeners------------------------------------*/
@@ -95,31 +96,7 @@ function gameBoardPlay() {
 
 function placeToken(slotIdx) {
     gameBoard[slotIdx] = playerTurn
-    // console.log(slotIdx, playerTurn);
-    for (let i = gameBoard.length - 1; i >= 0; i--) {
-        if (gameBoard[slotIdx] === null) {
-            
-        }
-    }
 }
-
-// for (let i = 7; i <= gameBoard.length; i++) {
-//     tileEls.forEach(function(idx) {
-//         if (tileEls[idx] % i === 0) {
-//             return tileEls[35] === `${playerTurn === 1? 'player1' : 'player2'}`
-//         }else if (tileEls[35] !== null) {
-//             return tileEls[28] === `${playerTurn === 1? 'player1' : 'player2'}`
-//         }else if (tileEls[35] !== null && tileEls[28] !== null) {
-//             return tileEls[21] === `${playerTurn === 1? 'player1' : 'player2'}`
-//         }else if (tileEls[35] !== null && tileEls[28] !== null && tileEls[21] !== null) {
-//             return tileEls[14] === `${playerTurn === 1? 'player1' : 'player2'}`
-//         }else if (tileEls[35] !== null && tileEls[28] !== null && tileEls[21] !== null && tileEls[14] !== null) {
-//             return tileEls[7] === `${playerTurn === 1? 'player1' : 'player2'}`
-//         }else {
-//             return tileEls[0]
-//         }
-//     })
-// }
 
 function outcomeMessage() {
     if (theWinner === false && tie === false) {
