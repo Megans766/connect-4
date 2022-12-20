@@ -24,10 +24,17 @@ let gameBoard, playerTurn, tie, theWinner
 /*------------------------------------------Cached---------------------------------------------*/
 const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
+const rowZero = document.querySelectorAll('.row0')
+const rowOne = document.querySelectorAll('.row1')
+const rowTwo = document.querySelectorAll('.row2')
+const rowThree = document.querySelectorAll('.row3')
+const rowFour = document.querySelectorAll('.row4')
+const rowFive = document.querySelectorAll('.row5')
 const displayMessage = document.getElementById('game-result')
 
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
+
 
 /*------------------------------------------Functions------------------------------------------*/
 start()
@@ -55,6 +62,8 @@ function render() {
 function handleClick(evt) {
     const slotIdx = parseInt(evt.target.id)
 
+    if (gameBoard[slotIdx]) return
+
     placeToken(slotIdx)
     tieGame()
     changeTurn()
@@ -75,7 +84,7 @@ function gameBoardPlay() {
         }else if (slot === -1) {
             return slotEls[idx].style.backgroundColor = "#FF01E7"
         }else {
-            return slotEls[idx] === ""
+            return slotEls[idx].style.backgroundColor = "FFFFFF"
         }
     })
 }
@@ -86,13 +95,12 @@ function gameBoardPlay() {
 
 function placeToken(slotIdx) {
     gameBoard[slotIdx] = playerTurn
-    console.log(slotIdx, playerTurn);
-    // for (let i = 7; i <= gameBoard.length; i++) {
-    //     if (slotIdx % i === 0) {
-
-    //     }
-    // }
-    
+    // console.log(slotIdx, playerTurn);
+    for (let i = gameBoard.length - 1; i >= 0; i--) {
+        if (gameBoard[slotIdx] === null) {
+            
+        }
+    }
 }
 
 // for (let i = 7; i <= gameBoard.length; i++) {
