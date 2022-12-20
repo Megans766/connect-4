@@ -52,13 +52,9 @@ function render() {
 function handleClick(evt) {
     const slotIdx = parseInt(evt.target.id)
     if (gameBoard[slotIdx] !== null) return
-
-    // gameStart = 35
-    // while(gameBoard[slotIdx + gameStart] !== null) {
-    //     gameStart -= 7
-    // }
-    // gameBoard[slotIdx + gameStart] = playerTurn
+    if (theWinner !== false) return
     placeToken(slotIdx)
+    gameWinner()
     tieGame()
     changeTurn()
     render()
@@ -114,3 +110,17 @@ function tieGame() {
         return slot !== null
     })
 }
+
+function gameWinner() {
+    winOutcomes.forEach(function(slot) {
+        let win = 0
+        slot.forEach(function(element) {
+            win += gameBoard[element]
+        })
+        if (Math.abs(win) === 4) {
+            theWinner = true
+        }
+    })
+
+}
+
