@@ -24,8 +24,7 @@ const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
-
-
+document.getElementById('reset-button').addEventListener('click', start)
 /*------------------------------------------Functions------------------------------------------*/
 start()
 
