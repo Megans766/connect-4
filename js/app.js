@@ -66,6 +66,7 @@ function gameStartMessage() {
         }
     })
 }
+
 function gameBoardPlay() {
     gameBoard.forEach(function(slot, idx) {
         if (slot === 1) {
@@ -92,7 +93,7 @@ function outcomeMessage() {
     }else if (theWinner === false && tie === true) {
         displayMessage.textContent = "It's a tie!"
     }else {
-        displayMessage.textContent = `${playerTurn === -1? 'player1' : 'player2'} wins!`
+        displayMessage.textContent = `${playerTurn === -1? 'player2' : 'player1'} wins!`
     }
 }
 
