@@ -23,7 +23,7 @@ let gameBoard, playerTurn, tie, theWinner
 
 /*------------------------------------------Cached---------------------------------------------*/
 const gameBoardEls = document.querySelector('.game-board')
-const tileEls = document.querySelectorAll('.tile')
+const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
 
 /*------------------------------------------Event Listeners------------------------------------*/
@@ -53,8 +53,9 @@ function render() {
     outcomeMessage()
 }
 function handleClick(evt) {
-    const tileIdx = parseInt(evt.target.id)
-    placeToken(tileIdx)
+    const slotIdx = parseInt(evt.target.id)
+
+    placeToken(slotIdx)
     tieGame()
     changeTurn()
     render()
@@ -70,11 +71,11 @@ function gameStartMessage() {
 function gameBoardPlay() {
     gameBoard.forEach(function(slot, idx) {
         if (slot === 1) {
-            tileEls[idx] === `${playerTurn === 1? 'player1' : 'player2'}`
+            return slotEls[idx].style.backgroundColor = "#03FFBC"
         }else if (slot === -1) {
-            tileEls[idx] === `${playerTurn === 1? 'player1': 'player2'}`
+            return slotEls[idx].style.backgroundColor = "#FF01E7"
         }else {
-            tileEls[idx] === ""
+            return slotEls[idx] === ""
         }
     })
 }
@@ -83,15 +84,17 @@ function gameBoardPlay() {
 //if column is selected filter through column to see which spot is available
 //if spot is open fill spot by current player turn 
 
-function placeToken(tileIdx) {
-    console.log(tileIdx);
-    for (let i = 7; i <= gameBoard.length; i++) {
-        if (tileIdx % i === 0) {
+function placeToken(slotIdx) {
+    gameBoard[slotIdx] = playerTurn
+    console.log(slotIdx, playerTurn);
+    // for (let i = 7; i <= gameBoard.length; i++) {
+    //     if (slotIdx % i === 0) {
 
-        }
-    }
+    //     }
+    // }
     
 }
+
 // for (let i = 7; i <= gameBoard.length; i++) {
 //     tileEls.forEach(function(idx) {
 //         if (tileEls[idx] % i === 0) {
