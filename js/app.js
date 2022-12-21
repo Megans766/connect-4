@@ -91,11 +91,11 @@ function placeToken(slotIdx) {
 
 function outcomeMessage() {
     if (theWinner === false && tie === false) {
-        displayMessage.textContent = `${playerTurn === 1? 'player1' : 'player2'} turn`
+        displayMessage.textContent = `${playerTurn === 1? "Player 1's" : "Player 2's"} turn`
     }else if (theWinner === false && tie === true) {
         displayMessage.textContent = "It's a tie!"
     }else {
-        displayMessage.textContent = `${playerTurn === -1? 'player2' : 'player1'} wins!`
+        displayMessage.textContent = `${playerTurn === -1? 'Player 2' : 'Player 1'} wins!`
     }
 }
 
