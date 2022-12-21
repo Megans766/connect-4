@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vw;
-    background-image: url("");
 }
 
 h1, h3{
@@ -21,17 +20,31 @@ h3 {
     height: 350px;
     width: 450px;
     border: 5px solid black;
+    background: linear-gradient(#65FDF0, #1D6FA3, #1f259d);
     margin: 0 auto;
     padding: 10px;
 }
 
-.tile {
+.tile{
     border: 1px solid turquoise;
     border-radius: 50%;
+    animation: bounce 1.5s;
+}
+
+@keyframes bounce{
+    0%, 100%{ transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    60% {transform: translateY(-15px);}
 }
 
 #reset-button {
-    width: 75px;
-    margin: 15px auto;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 10px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #000000;
 }
 

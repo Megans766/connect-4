@@ -22,9 +22,10 @@ let gameBoard, playerTurn, tie, theWinner, gameStart
 const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
+let bubbleSound = new Audio('./assets/audio/bubble-sound.wav')
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
-document.getElementById('reset-button').addEventListener('click', start)
+document.getElementById('reset-button').addEventListener('click', playBubbleSound)
 /*------------------------------------------Functions------------------------------------------*/
 start()
 
@@ -48,6 +49,7 @@ function render() {
     gameBoardPlay()
     outcomeMessage()
 }
+
 function handleClick(evt) {
     const slotIdx = parseInt(evt.target.id)
     if (gameBoard[slotIdx] !== null) return
@@ -70,10 +72,10 @@ function gameStartMessage() {
 function gameBoardPlay() {
     gameBoard.forEach(function(slot, idx) {
         if (slot === 1) {
-            return slotEls[idx].style.backgroundColor = "#03FFBC"
+            return slotEls[idx].style.backgroundColor = "#93E9BE"
         }else if (slot === -1) {
-            return slotEls[idx].style.backgroundColor = "#FF01E7"
-        }else {
+            return slotEls[idx].style.backgroundColor = "#71092C"
+        }else {559
             return slotEls[idx].style.backgroundColor = "#FFFFFF"
         }
     })
@@ -121,6 +123,11 @@ function gameWinner() {
             theWinner = true
         }
     })
+}
 
+function playBubbleSound() {
+    bubbleSound.volume = 0.25
+    bubbleSound.play()
+    start()
 }
 
