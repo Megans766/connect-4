@@ -22,11 +22,10 @@ let gameBoard, playerTurn, tie, theWinner, gameStart
 const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
-let bubbleSound = new Audio('./assets/audio/bubble-sound.wav')
+const bubbleSound = new Audio('./assets/audio/bubble-sound.wav')
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
 document.getElementById('reset-button').addEventListener('click', playBubbleSound)
-document.getElementById('light-dark').addEventListener('click', lightDarkButton)
 /*------------------------------------------Functions------------------------------------------*/
 start()
 
@@ -131,7 +130,3 @@ function playBubbleSound() {
     bubbleSound.play()
     start()
 }
-
-function lightDarkButton() {
-}
-

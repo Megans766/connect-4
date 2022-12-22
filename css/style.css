@@ -73,12 +73,6 @@ h3 {
     border-radius: 50%;
 }
 
-#buttons {
-    display: flex;
-    margin: 20px auto;
-}
-
-
 #reset-button {
     height: 35px;
     width: 140px;
@@ -86,28 +80,10 @@ h3 {
     border-radius: 10px;
     padding: 10px;
     background: linear-gradient(#FFF5C3, #9452A5);
+    margin: 0 auto;
     font-size: 18px;
     font-weight: bold;
 }
-
-#light-dark {
-    height: 35px;
-    width: 130px;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    background: linear-gradient(#FDBB2D, #22C1C3);
-    color: #020024;
-    font-size: 16px;
-    margin: 0 20px;
-    font-weight: bold;
-}
-
-#light-dark::after {
-    background: linear-gradient(#020024, #796309);
-    color: #FFFFFF;
-}
-
 
 @keyframes bounce {
     0%{ transform: translateX(0);}
