@@ -64,7 +64,7 @@ function handleClick(evt) {
 function gameStartMessage() {
     gameBoard.forEach(function(slot) {
         if (slot === null) {
-            displayMessage.textContent = "Click a column to begin"
+            displayMessage.textContent = "Click a circle to start the game"
         }
     })
 }
