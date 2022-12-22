@@ -25,5 +25,7 @@ The objective of the game is to get **_four_** consecutive matching tokens. Two 
 * Sound for token placement on game board
 * Falling token Animations
 
+## [Project Planning Material](https://docs.google.com/document/d/1ANtO8u0AT7pqnwB6jHk41RL9Snvpq0kKAApw5W6iz6I/edit)
+
 
 
