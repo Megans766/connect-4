@@ -1,6 +1,6 @@
 # Connect 4
 
-![](./assets/images/README-screenshot.png)
+![](./assets/images/README-ss.png)
 
 The objective of the game is to get **_four_** consecutive matching tokens. Two players will alternate turns until there is a winner or the board is full of tokens rendering a tie. To initiate game play click on the column of your choice. 
 <br>
@@ -18,7 +18,7 @@ The objective of the game is to get **_four_** consecutive matching tokens. Two 
 
 * Connect 4 uses island favicon created on: [faviconer](http://www.faviconer.com/).
 
-* Connect 4 uses Roboto Black 900 font found at: [Google Fonts](https://fonts.google.com)
+* Connect 4 uses Roboto Black 900 font found at: [Google Fonts](https://fonts.google.com).
 
 # Ice Box
 * Dark Mode
