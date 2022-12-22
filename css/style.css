@@ -1,8 +1,9 @@
-@media screen and (min-device-width: 330px) and (max-device-width: 980px) {
+@media (min-device-width: 330px) {
     html {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+        
     }
 }
 
@@ -12,7 +13,6 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: aqua;
     height: 100vh;
     overflow: hidden;
 }
@@ -44,7 +44,7 @@ h1 {
 
 #wave h1:nth-child(2) {
     color: #008080;
-    animation: wavy 3s ease-in-out infinite;
+    animation: wavy 2.5s ease-in-out infinite;
 }
 
 h3 {

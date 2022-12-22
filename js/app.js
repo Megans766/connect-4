@@ -15,6 +15,7 @@ const winOutcomes = [
     [17, 25, 33, 41], [2, 10, 18, 26], [10, 18, 26, 34], [5, 11, 17, 23], [11, 17, 23, 29], [17, 23, 29, 35], [4, 10, 16, 22],
     [10, 16, 22, 28], [3, 9, 15, 21], [3, 11, 19, 27]
 ]
+
 /*------------------------------------------Variables------------------------------------------*/
 let gameBoard, playerTurn, tie, theWinner, gameStart
 
@@ -23,9 +24,11 @@ const gameBoardEls = document.querySelector('.game-board')
 const slotEls = document.querySelectorAll('.tile')
 const displayMessage = document.getElementById('game-result')
 const bubbleSound = new Audio('./assets/audio/bubble-sound.wav')
+
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
 document.getElementById('reset-button').addEventListener('click', playBubbleSound)
+
 /*------------------------------------------Functions------------------------------------------*/
 start()
 
