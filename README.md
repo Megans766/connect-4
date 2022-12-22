@@ -1,4 +1,4 @@
-# Connect 4
+## Connect 4
 
 ![](./assets/images/README-ss.png)
 
@@ -7,20 +7,20 @@ The objective of the game is to get **_four_** consecutive matching tokens. Two 
 <br>
 # [Play Connect 4](https://rad-shortbread-da9ba9.netlify.app)
 
-# Technologies used
+## Technologies used
 
 * CSS 
 * JavaScript
 * HTML
 * git
 
-# Credits
+## Credits
 
 * Connect 4 uses island favicon created on: [faviconer](http://www.faviconer.com/).
 
 * Connect 4 uses Roboto Black 900 font found at: [Google Fonts](https://fonts.google.com).
 
-# Ice Box
+## Ice Box
 * Dark Mode
 * Sound for token placement on game board
 * Falling token Animations
