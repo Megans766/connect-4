@@ -26,6 +26,7 @@ let bubbleSound = new Audio('./assets/audio/bubble-sound.wav')
 /*------------------------------------------Event Listeners------------------------------------*/
 gameBoardEls.addEventListener('click', handleClick)
 document.getElementById('reset-button').addEventListener('click', playBubbleSound)
+document.getElementById('light-dark').addEventListener('click', lightDarkButton)
 /*------------------------------------------Functions------------------------------------------*/
 start()
 
@@ -129,5 +130,8 @@ function playBubbleSound() {
     bubbleSound.volume = 0.25
     bubbleSound.play()
     start()
+}
+
+function lightDarkButton() {
 }
 
