@@ -75,8 +75,8 @@ function gameBoardPlay() {
             return slotEls[idx].style.backgroundColor = "#93E9BE"
         }else if (slot === -1) {
             return slotEls[idx].style.backgroundColor = "#71092C"
-        }else {559
-            return slotEls[idx].style.backgroundColor = "#FFFFFF"
+        }else {
+            return slotEls[idx].style.backgroundColor = ""
         }
     })
 }
