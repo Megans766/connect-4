@@ -22,8 +22,10 @@ The objective of the game is to get **_four_** consecutive matching tokens. Two 
 
 ## Ice Box
 * Dark Mode
-* Sound for token placement on game board
-* Falling token Animations
+* Falling token animation
+* Token sound when placed on board
+* Mute button
+* Floating bubble animation for reset button
 
 ## [Project Planning Material](https://docs.google.com/document/d/1ANtO8u0AT7pqnwB6jHk41RL9Snvpq0kKAApw5W6iz6I/edit)
 
